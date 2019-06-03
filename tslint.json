@@ -1,0 +1,55 @@
+{
+    "extends": [
+        "tslint:recommended",
+        "tslint-eslint-rules",
+        "tslint-config-prettier",
+        "tslint-react"
+    ],
+    "rulesDirectory": [],
+    "rules": {
+        "object-literal-shorthand": false,
+        "quotemark": [true, "single", "jsx-double"],
+        "trailing-comma": false,
+        "curly": true,
+        "no-console": [true, "log"],
+        "space-before-function-paren": [true, {"anonymous": "always", "named": "never"}],
+        "object-literal-sort-keys": false,
+        "only-arrow-functions": false,
+        "arrow-parens": [true, "ban-single-arg-parens"],
+        "object-curly-spacing": [true,  "never"],
+        "interface-name": false,
+        "array-type": false,
+        "no-empty-interface": false,
+        "max-line-length": [true, {"limit": 120, "ignore-pattern": "^(\\s)*[*].*|//.*$"}],
+        "no-namespace": false,
+        "no-shadowed-variable": false,
+        "ban-types": false,
+        "variable-name": false,
+        "callable-types": false,
+        "jsx-no-bind": true,
+        "jsx-no-lambda": true,
+        "jsx-no-multiline-js": false,
+        "jsx-boolean-value": false,
+        "jsx-no-string-ref": false,
+        "member-ordering": [true, {
+            "order": [
+                "private-static-field",
+                "protected-static-field",
+                "public-static-field",
+                "private-static-method",
+                "protected-static-method",
+                "public-static-method",
+                "private-instance-method",
+                "protected-instance-method",
+                "public-instance-method"
+            ]
+        }],
+        "prefer-const-enum": true,
+        "naming-convention": [
+            true,
+            {"type": "variable", "modifiers": ["global", "const"], "filter": "(i|I)d$", "format": ["UPPER_CASE"], "final": true},
+            {"type": "enum", "format": "StrictPascalCase"},
+            {"type": "enumMember", "format": "StrictPascalCase"}
+        ]
+    }
+}
