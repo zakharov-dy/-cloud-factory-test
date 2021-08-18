@@ -1,6 +1,6 @@
-import {action, observable} from 'mobx';
+import { action, observable, makeObservable } from 'mobx';
 
-import {Quotation} from '../../api/ticker/quotation.types';
+import {Quotation} from '../../../api/ticker/quotation.types';
 
 export class TickerRow {
   public name: string;
@@ -8,6 +8,7 @@ export class TickerRow {
   @observable public highestBid: string;
   @observable public percentChange: string;
   constructor({last, highestBid, percentChange}: Quotation, name: string) {
+    makeObservable(this);
     this.name = name;
     this.last = last;
     this.highestBid = highestBid;

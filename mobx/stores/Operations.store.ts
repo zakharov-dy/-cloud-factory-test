@@ -1,6 +1,6 @@
-import {action, observable} from 'mobx';
+import { action, observable, makeObservable } from 'mobx';
 
-import {Operation} from './operation.types';
+import {Operation} from '../utils/operation/operation.types';
 
 export class Operations {
   @observable.deep public operations = new Map<string, Operation>();
@@ -12,6 +12,10 @@ export class Operations {
   @action public removeOperation = (id: string) => {
     this.operations.delete(id);
   };
+
+  constructor() {
+    makeObservable(this);
+  }
 }
 
 export default new Operations();

@@ -1,6 +1,6 @@
 import {flow} from 'mobx';
 
-import operations from './Operations';
+import operations from '../../stores/Operations.store';
 
 // Поскольку flow канселится можно добавить и cancel, но тут это не нужно
 export const operationRunner = <TArgs extends any[], TRes>(

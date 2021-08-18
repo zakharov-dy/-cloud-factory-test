@@ -1,18 +1,29 @@
-import {action, autorun, computed, IReactionDisposer, observable} from 'mobx';
+import {
+  action,
+  autorun,
+  computed,
+  IReactionDisposer,
+  observable,
+  makeObservable,
+} from 'mobx';
 import {now} from 'mobx-utils';
 
-import tickerAPI from '../../api/ticker/Ticker';
-import {GetTickerResponse} from '../../api/ticker/ticker.types';
-import {BoundStore} from '../../hooks/bindStore/boundStore.types';
-import operation from '../operation/operationDecorathor';
-import operationStore from '../operation/Operations';
-import {TickerRow} from './TickerRow';
+import tickerAPI from '../../../api/ticker/Ticker';
+import {GetTickerResponse} from '../../../api/ticker/ticker.types';
+import {BoundStore} from '../../../hooks/bindStore/boundStore.types';
+import operation from '../../utils/operation/operationDecorathor';
+import operationStore from '../Operations.store';
+import {TickerRow} from './TickerRow.model';
 
 type TickerRowView = Omit<TickerRow, 'update'>;
 
 class Ticker implements BoundStore {
   @observable.shallow private values = observable.map<string, TickerRow>();
   private getTickerCanceller: IReactionDisposer | undefined;
+
+  constructor() {
+    makeObservable(this);
+  }
 
   @action private update(res: GetTickerResponse) {
     this.values.forEach((value: TickerRow, k: string) => {

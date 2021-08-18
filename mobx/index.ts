@@ -1,7 +1,7 @@
 import {configure} from 'mobx';
 
-import operations from './operation/Operations';
-import ticker from './ticker/Ticker';
+import operations from './stores/Operations.store';
+import ticker from './stores/ticker/Ticker.store';
 
 configure({
   enforceActions: 'observed'
