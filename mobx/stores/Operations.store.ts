@@ -3,18 +3,23 @@ import { action, observable, makeObservable } from 'mobx';
 import {Operation} from '../utils/operation/operation.types';
 
 export class Operations {
-  @observable.deep public operations = new Map<string, Operation>();
+  public operations = new Map<string, Operation>();
 
-  @action public addOrUpdateOperation = (operation: Operation) => {
+  public addOrUpdateOperation = (operation: Operation) => {
+    console.log(operation);
     this.operations.set(operation.id, operation);
   };
 
-  @action public removeOperation = (id: string) => {
+  public removeOperation = (id: string) => {
     this.operations.delete(id);
   };
 
   constructor() {
-    makeObservable(this);
+    makeObservable(this, {
+      operations: observable.deep,
+      addOrUpdateOperation: action,
+      removeOperation: action
+    });
   }
 }
 

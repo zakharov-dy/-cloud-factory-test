@@ -9,9 +9,4 @@ const BoundTicker = bindStore<Props, TickerType>(ticker, {
   containerStyle: styles.container
 })(observer(Ticker));
 
-// @ts-ignore
-BoundTicker.navigationOptions = {
-  title: 'Котировки'
-};
-
 export default BoundTicker;

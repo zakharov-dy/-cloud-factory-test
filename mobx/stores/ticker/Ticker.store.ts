@@ -5,50 +5,60 @@ import {
   IReactionDisposer,
   observable,
   makeObservable,
+  runInAction,
 } from 'mobx';
 import {now} from 'mobx-utils';
 
 import tickerAPI from '../../../api/ticker/Ticker';
 import {GetTickerResponse} from '../../../api/ticker/ticker.types';
 import {BoundStore} from '../../../hooks/bindStore/boundStore.types';
-import operation from '../../utils/operation/operationDecorathor';
+import { operationRunner } from '../../utils/operation/operationRunner';
 import operationStore from '../Operations.store';
 import {TickerRow} from './TickerRow.model';
 
 type TickerRowView = Omit<TickerRow, 'update'>;
 
 class Ticker implements BoundStore {
-  @observable.shallow private values = observable.map<string, TickerRow>();
+  private values = observable.map<string, TickerRow>();
   private getTickerCanceller: IReactionDisposer | undefined;
 
   constructor() {
-    makeObservable(this);
+    makeObservable<Ticker, "values" | "update">(this, {
+      values: observable.shallow,
+      update: action,
+      visible: computed,
+      operationHasError: computed
+    });
   }
 
-  @action private update(res: GetTickerResponse) {
+  private update(res: GetTickerResponse) {
     this.values.forEach((value: TickerRow, k: string) => {
       if (!res[k]) {
         this.values.delete(k);
       }
     });
-
+    
     Object.keys(res).forEach((k: string) => {
       const oldRow = this.values.get(k);
       const newRow = res[k];
+
       if (oldRow) {
         oldRow.update(newRow);
       } else {
-        this.values.set(k, new TickerRow(newRow, k));
+        console.log(this.values);
+        runInAction(() => this.values.set(k, new TickerRow(newRow, k)));
       }
     });
   }
 
-  @operation('getTicker') public *getTicker() {
+  private *_getTicker() {
     // Если нужно, чтобы что-то пошло не так
     // const res: GetTickerResponse = yield tickerAPI.getUnstableTicker();
     const res: GetTickerResponse = yield tickerAPI.getTicker();
     this.update(res);
   }
+
+  public getTicker = operationRunner('getTicker', this._getTicker.bind(this)).run
 
   public startUp() {
     this.getTickerCanceller = autorun(() => {
@@ -57,7 +67,7 @@ class Ticker implements BoundStore {
     });
   }
 
-  @computed get visible(): TickerRowView[] {
+  get visible(): TickerRowView[] {
     const res: TickerRowView[] = [];
     this.values.forEach(({update, ...other}: TickerRow) => {
       res.push(other);
@@ -65,7 +75,7 @@ class Ticker implements BoundStore {
     return res;
   }
 
-  @computed get operationHasError(): boolean {
+  get operationHasError(): boolean {
     const operation = operationStore.operations.get('getTicker');
     return Boolean(operation && operation.isError);
   }
