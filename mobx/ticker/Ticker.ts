@@ -1,11 +1,11 @@
 import {action, autorun, computed, IReactionDisposer, observable} from 'mobx';
 import {now} from 'mobx-utils';
 
-import tickerAPI from '../../api/Ticker';
-import {GetTickerResponse} from '../../types/api/ticker';
-import {BoundStore} from '../../types/core/boundStore';
-import operation from '../core/operationDecorathor';
-import operationStore from '../core/Operations';
+import tickerAPI from '../../api/ticker/Ticker';
+import {GetTickerResponse} from '../../api/ticker/ticker.types';
+import {BoundStore} from '../../hooks/bindStore/boundStore.types';
+import operation from '../operation/operationDecorathor';
+import operationStore from '../operation/Operations';
 import {TickerRow} from './TickerRow';
 
 type TickerRowView = Omit<TickerRow, 'update'>;

@@ -1,6 +1,6 @@
 import {observer} from 'mobx-react';
 
-import bindStore from '../../hoc/bindStore';
+import bindStore from '../../hooks/bindStore/bindStore.hoc';
 import {ticker, TickerType} from '../../mobx';
 import {styles} from './styles';
 import Ticker, {Props} from './Ticker';

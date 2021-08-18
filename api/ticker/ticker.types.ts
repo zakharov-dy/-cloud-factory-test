@@ -1,4 +1,4 @@
-import {Quotation} from '../entities/quotation';
+import {Quotation} from './quotation.types';
 
 export interface GetTickerResponse {
   [name: string]: Quotation;

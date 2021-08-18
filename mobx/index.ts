@@ -1,6 +1,6 @@
 import {configure} from 'mobx';
 
-import operations from './core/Operations';
+import operations from './operation/Operations';
 import ticker from './ticker/Ticker';
 
 configure({

@@ -1,5 +1,5 @@
-import {GetTickerResponse} from '../types/api/ticker';
-import agent from './agent';
+import {GetTickerResponse} from './ticker.types';
+import agent from '../agent';
 
 export class TickerAPI {
   // Если нужно, чтобы что-то пошло не так

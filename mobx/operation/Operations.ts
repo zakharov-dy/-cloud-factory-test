@@ -1,6 +1,6 @@
 import {action, observable} from 'mobx';
 
-import {Operation} from '../../types/core/operation';
+import {Operation} from './operation.types';
 
 export class Operations {
   @observable.deep public operations = new Map<string, Operation>();

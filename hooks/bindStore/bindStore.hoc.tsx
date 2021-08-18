@@ -2,7 +2,7 @@ import { useIsFocused } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import {StyleProp, View, ViewStyle} from 'react-native';
 
-import {BoundStore} from '../types/core/boundStore';
+import {BoundStore} from './boundStore.types';
 
 interface Options {
   containerStyle?: StyleProp<ViewStyle>;

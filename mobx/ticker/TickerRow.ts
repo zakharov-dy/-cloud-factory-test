@@ -1,6 +1,6 @@
 import {action, observable} from 'mobx';
 
-import {Quotation} from '../../types/entities/quotation';
+import {Quotation} from '../../api/ticker/quotation.types';
 
 export class TickerRow {
   public name: string;
