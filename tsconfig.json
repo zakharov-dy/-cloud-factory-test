@@ -16,6 +16,8 @@
     "target": "esnext"
   },
   "exclude": [
-    "node_modules"
-  ]
+    "node_modules",
+    "__tests__/**/*-test.ts"
+  ],
+  "extends": "expo/tsconfig.base"
 }
