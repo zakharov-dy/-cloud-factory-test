@@ -9,7 +9,7 @@ import {
 } from 'mobx';
 import {now} from 'mobx-utils';
 
-import tickerAPI from '../../services/api/ticker/Ticker';
+import tickerAPI from '../../services/api/ticker/Ticker.service';
 import {GetTickerResponse} from '../../services/api/ticker/ticker.types';
 import {BoundStore} from '../../hooks/bindStore/boundStore.types';
 import { operationRunner } from '../../utils/operation/operationRunner';

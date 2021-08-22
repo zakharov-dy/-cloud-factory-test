@@ -1,7 +1,7 @@
 import {GetTickerResponse} from './ticker.types';
 import agent from '../agent';
 
-export class TickerAPI {
+export class TickerApiService {
   // Если нужно, чтобы что-то пошло не так
   public getUnstableTicker = (): Promise<GetTickerResponse> => {
     const results = [
@@ -15,4 +15,4 @@ export class TickerAPI {
     agent.get<GetTickerResponse>('/public?command=returnTicker');
 }
 
-export default new TickerAPI();
+export default new TickerApiService();
