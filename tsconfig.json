@@ -3,7 +3,7 @@
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
-    "experimentalDecorators": true,
+    "experimentalDecorators": false,
     "useDefineForClassFields": true,
     "esModuleInterop": true,
     "isolatedModules": true,

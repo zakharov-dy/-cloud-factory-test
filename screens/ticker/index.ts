@@ -1,12 +1,12 @@
 import {observer} from 'mobx-react';
 
 import bindStore from '../../hooks/bindStore/bindStore.hoc';
-import {ticker, TickerType} from '../../mobx';
+import { TickerType, ticker } from '../../stores';
 import {styles} from './styles';
-import Ticker, {Props} from './Ticker';
+import TickersScreen, {Props} from './TickersScreen';
 
 const BoundTicker = bindStore<Props, TickerType>(ticker, {
   containerStyle: styles.container
-})(observer(Ticker));
+})(observer(TickersScreen));
 
 export default BoundTicker;

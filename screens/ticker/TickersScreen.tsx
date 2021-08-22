@@ -2,14 +2,14 @@ import React from 'react';
 import {FlatList} from 'react-native';
 
 import Error from '../../components/Error';
-import {TickerType} from '../../mobx';
+import { TickerType } from '../../stores';
 import TickerRow, {TickerRowProps} from './ticker-row/TickerRow';
 
 export interface Props {
   boundStore: TickerType;
 }
 
-export default class Ticker extends React.Component<Props> {
+export default class TickersScreen extends React.Component<Props> {
   private renderItem = ({item}: { item: TickerRowProps }) => (
     <TickerRow {...item} />
   );

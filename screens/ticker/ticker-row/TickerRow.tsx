@@ -4,10 +4,10 @@ import {Text, View} from 'react-native';
 import {styles} from './styles';
 
 export interface TickerRowProps {
-  percentChange: string;
-  last: string;
+  percentChange?: string;
+  last?: string;
   name: string;
-  highestBid: string;
+  highestBid?: string;
 }
 
 export default ({percentChange, last, name, highestBid}: TickerRowProps) => (

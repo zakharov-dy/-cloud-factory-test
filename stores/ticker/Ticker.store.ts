@@ -9,9 +9,9 @@ import {
 } from 'mobx';
 import {now} from 'mobx-utils';
 
-import tickerAPI from '../../../api/ticker/Ticker';
-import {GetTickerResponse} from '../../../api/ticker/ticker.types';
-import {BoundStore} from '../../../hooks/bindStore/boundStore.types';
+import tickerAPI from '../../services/api/ticker/Ticker';
+import {GetTickerResponse} from '../../services/api/ticker/ticker.types';
+import {BoundStore} from '../../hooks/bindStore/boundStore.types';
 import { operationRunner } from '../../utils/operation/operationRunner';
 import operationStore from '../Operations.store';
 import {TickerRow} from './TickerRow.model';

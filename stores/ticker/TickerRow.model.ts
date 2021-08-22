@@ -1,13 +1,13 @@
 import { action, observable, makeObservable } from 'mobx';
 
-import {Quotation} from '../../../api/ticker/quotation.types';
+import {Quotation} from '../../services/api/ticker/quotation.types';
 
 export class TickerRow {
   // TODO: https://stackoverflow.com/questions/67266810/error-mobx-cannot-apply-observable-to-storeuser-field-not-found
-  public name?: string = undefined;
-  public last?: string = undefined;
-  public highestBid?: string = undefined;
-  public percentChange?: string = undefined;
+  public name: string;
+  public last: string;
+  public highestBid: string;
+  public percentChange: string;
 
   constructor({last, highestBid, percentChange}: Quotation, name: string) {
     makeObservable(this, {
